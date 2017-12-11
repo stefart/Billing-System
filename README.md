@@ -31,4 +31,4 @@ E’ possibile visualizzare la tariffa oraria cliccando il pulsante “Tariffa O
 
 -------------
 Il risultato del test di copertura è riassunto in /coverage/index.html. Si tenga presente che il test effettuato sulla creazione della fattura fallisce a causa di un problema di cucumber nell'interpretazione del codice sorgente, nel momento in cui recupera la variabile della tariffa oraria.
-Rendendo il codice interpretabile (inserendo una tariffa oraria costante a soli fini di test, in quanto una tariffa oraria impostata come costante nel codice sorgente rende l'intero progetto inutilizzabile) la copertura passa dal 75% all' 80%.
+Rendendo il codice interpretabile (inserendo una tariffa oraria costante a soli fini di test, in quanto una tariffa oraria impostata come costante nel codice sorgente rende l'intero progetto inutilizzabile) la copertura passa dal [75%](https://github.com/stefart/Billing-System/commit/891d6e7c4f20a5d0989048ab7f1dd46656d9078e) all' [80%](https://github.com/stefart/Billing-System/commit/891d6e7c4f20a5d0989048ab7f1dd46656d9078e).
