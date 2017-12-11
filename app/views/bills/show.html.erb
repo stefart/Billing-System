@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Example 2</title>
+  </head>
+  <body>
+    <main>
+      <div id="details" class="clearfix">
+        <div id="client">
+          <div class="to">Cliente</div>
+          <h2 class="name"><%=@client.nome%><%=@client.cognome%></h2>
+          <div class="address"><%=@client.indirizzo%></div>
+          <div class="email">tel: <%=@client.telefono%></div>
+        </div>
+        <div id="invoice">
+          <h1>Fattura no.<%=@bill.id%></h1>
+          <div class="date">Data: <%=@bill.created_at.to_date%></div>
+        </div>
+      </div>
+      <table border="0" cellspacing="0" cellpadding="0" align=center id="bill">
+        <thead>
+          <tr>
+            <th class="no">#</th>
+            <th class="qty">Voce</th>
+            <th class="unit">Tariffa oraria</th>
+            <th class="qty">Ore fatturate</th>
+            <th class="total">Totale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="no">01</td>
+            <td class="qty"><%=@bill.voce%></td>
+            <td class="unit"><% if @bill.tariffa != nil %>
+            <%=@bill.tariffa%></h3> &nbsp;€
+            <%end%></td>
+            <td class="qty"><%=@bill.ore_eff%> &nbsp;h</td>
+            <td class="total"><% if @bill.tariffa != nil %>
+              <%=@bill.ore_eff * @bill.tariffa%> &nbsp;€
+            <%end%></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div id="notices">
+      </div>
+      <%= link_to 'Ritorna al cliente', client_path(@client) %> |
+      <%= link_to 'Ritorna all\'elenco delle fatture', client_bills_path(@client) %>
+    </main>
+  </body>
+</html>
+<!--<style>
+.right
+{
+    float: right;
+    text-indent: 5px;
+    margin-top: 0px;
+}
+</style>
+<h1>Fattura N. <%=@bill.id%></h1>
+
+<p class= "right" >
+<b>Cliente</b><br>
+<%=@client.nome%>
+<%=@client.cognome%><br>
+<%=@client.telefono%><br>
+<%=@client.indirizzo%><br>
+</p>
+
+<br>
+<b> Data Fattura: </b><%=@bill.created_at.to_date%>
+<br>
+<h3>Voce: <%=@bill.voce%></h3>
+<tab indent=5> <b> Ore fatturate: </b> <%=@bill.ore_eff%>
+<br>
+<% if @bill.tariffa != nil %>
+<h3>Totale: <%=@bill.ore_eff * @bill.tariffa%></h3>
+<%end%>
+<br>
+<%= link_to 'Ritorna al cliente', client_path(@client) %> |
+<%= link_to 'Ritorna all\'elenco delle fatture', client_bills_path(@client) %>
+
+-->

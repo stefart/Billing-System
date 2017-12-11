@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+<%
+con_fatt = []
+senza_fatt = []
+@clients.each do |client|
+  if client.bills.any? then con_fatt.push(client) else senza_fatt.push(client) end
+end
+%>
+<h1>Elenco Clienti</h1>
+<br>
+<table align=center>
+  <thead>
+    <tr>
+      <th id="title">Nome</th>
+      <th id="title">Cognome</th>
+      <th id="title">Telefono</th>
+      <th id="title">Indirizzo</th>
+      <th id="title">Ore totali</th>
+      <th id="title">Totale euro</th>
+      <th id="title">Ultima fattura</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% senza_fatt.each do |client| %>
+      <tr>
+        <td><%= client.nome %></td>
+        <td><%= client.cognome %></td>
+        <td><%= client.telefono %></td>
+        <td><%= client.indirizzo %></td>
+        <td><%= ore = 0
+                client.bills.each do |bi|
+                ore += bi.ore_eff
+                end
+                ore
+        %>&nbsp;h</td>
+        <td><%= tot = 0
+                client.bills.each do |bi|
+                  if bi.tariffa !=nil
+                    then tot+= bi.ore_eff * bi.tariffa
+                    end
+                  end
+                tot
+        %>&nbsp;€</td>
+        <td><%= if client.bills.any? then client.bills.last.voce else ' ' end %></td>
+        <td><%= link_to 'Visualizza', client %></td>
+        <td><%= link_to 'Modifica', edit_client_path(client) %></td>
+        <td><%= link_to 'Elimina', client, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+      </tr>
+    <% end %>
+
+<% con_fatt.each do |client| %>
+      <tr>
+        <td><%= client.nome %></td>
+        <td><%= client.cognome %></td>
+        <td><%= client.telefono %></td>
+        <td><%= client.indirizzo %></td>
+        <td><%= ore = 0
+                client.bills.each do |bi|
+                ore += bi.ore_eff
+                end
+                ore
+        %>&nbsp;h</td>
+        <td><%= tot = 0
+                client.bills.each do |bi|
+                  if bi.tariffa !=nil
+                    then tot+= bi.ore_eff * bi.tariffa
+                    end
+                  end
+                tot
+        %>&nbsp;€</td>
+        <td><%= if client.bills.any? then client.bills.last.voce else ' ' end %></td>
+        <td><%= link_to 'Visualizza', client %></td>
+        <td><%= link_to 'Modifica', edit_client_path(client) %></td>
+        <td><%= link_to 'Elimina', client, method: :delete, data: { confirm: 'Sei sicuro?' } %></td>
+      </tr>
+    <% end %>
+
+
+  </tbody>
+</table>
+<br>
+<p>
+  <%= link_to 'Nuovo Cliente', new_client_path %>
+  <br>
+  <%= link_to 'Tariffa Oraria', tariffa_oraria_path %>
+</p>

@@ -1,0 +1,61 @@
+<h1>Elenco Fatture per <%=@client.nome%> <%=@client.cognome%> </h1>
+<br>
+
+<% if @bills.any? %>
+
+
+  <div id="details" class="clearfix">
+    <div id="client">
+      <div class="to">Cliente</div>
+      <h2 class="name"><%=@client.nome%><%=@client.cognome%></h2>
+      <div class="address"><%=@client.indirizzo%></div>
+      <div class="email">tel: <%=@client.telefono%></div>
+    </div></div>
+
+<table border="0" cellspacing="0" cellpadding="0" align=center id="bill">
+  <thead>
+    <tr>
+      <th id="title">N.</th>
+      <th id="title">Data</th>
+      <th id="title">Voce</th>
+      <th id="title">Ore</th>
+      <th id="title">Tariffa Oraria</th>
+      <th id="title">Totale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.id %></td>
+        <td><%= bill.created_at.to_date %></td>
+        <td><%= bill.voce %></td>
+        <td><%= bill.ore_eff %></td>
+        <td><%= bill.tariffa%>&nbsp;€/h</td>
+        <%if bill.tariffa != nil %>
+        <td><%= bill.tariffa * bill.ore_eff %>&nbsp;€</td>
+        <%end%>
+      </tr>
+    <% end %>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td> <b> Totale: <%= z=0
+          @bills.each do |bill|
+            if bill.tariffa != nil
+              then z+= bill.tariffa * bill.ore_eff
+            end
+          end
+          z
+    %>&nbsp;€ </b> </td>
+  </tbody>
+</table>
+<br><br>
+
+
+<% else %>
+<em>Nessuna fattura rilevata</em>
+<%end%>
+
+<%= link_to 'Indietro', client_path(@client) %>

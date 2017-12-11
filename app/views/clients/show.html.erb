@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @client.nome %>
+</p>
+
+<p>
+  <strong>Cognome:</strong>
+  <%= @client.cognome %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @client.telefono %>
+</p>
+
+<p>
+  <strong>Indirizzo:</strong>
+  <%= @client.indirizzo %>
+</p>
+
+<p>
+  <strong>Ore totali:</strong>
+   <%= ore = 0
+          @client.bills.each do |bi|
+          ore += bi.ore_eff
+          end
+          ore
+   %>
+</p>
+
+<p>
+  <strong>Totale:</strong>
+  <%= tot = 0
+          @client.bills.each do |bi|
+              if bi.tariffa !=nil
+                then tot+= bi.ore_eff * bi.tariffa
+                end
+              end
+            tot
+  %>&nbsp;€
+</p>
+
+  <strong>Fatture</strong>
+<br>
+<p>
+  <% if @bills.any? %>
+    <ul>
+      <%= render @bills %>
+      <br>
+      <%= link_to 'Visualizza tutte', client_bills_path(@client) %>
+    </ul>
+  <% else %>
+    <em>Nessuna fattura presente</em>
+  <% end %>
+</p>
+
+
+<%= link_to 'Modifica', edit_client_path(@client) %> |
+<%= link_to 'Indietro', clients_path %> |
+<%= link_to 'Nuova Fattura', new_client_bill_path(@client) %>

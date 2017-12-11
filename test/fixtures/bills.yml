@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voce: MyString
+  ore_eff: 1
+  tariffa: 1
+  totale: 1
+  client: one
+
+two:
+  voce: MyString
+  ore_eff: 1
+  tariffa: 1
+  totale: 1
+  client: two

@@ -1,0 +1,22 @@
+<%= form_with(model: tariffa_orarium, local: true) do |form| %>
+  <% if tariffa_orarium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tariffa_orarium.errors.count, "error") %> prohibited this tariffa_orarium from being saved:</h2>
+
+      <ul>
+      <% tariffa_orarium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tariffa %>
+    <%= form.number_field :tariffa, id: :tariffa_orarium_tariffa %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Aggiorna Tariffa Oraria" %>
+  </div>
+<% end %>

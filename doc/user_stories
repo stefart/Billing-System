@@ -1,0 +1,8 @@
+1.	Come utente voglio inserire i dati dei clienti per poi creare una fattura con le ore.
+2.	Come utente voglio accedere ai dati del cliente per visualizzarli e modificarli.
+3.	Come utente voglio impostare la tariffa oraria.
+4.	Come utente voglio poter filtrare i clienti non ancora fatturati.
+5.	Come utente voglio visualizzare le fatture per ogni singolo cliente.
+6.	Come utente voglio generare una fattura per un specifico cliente per addebitare le ore non ancora addebitate.
+7.	Come utente voglio che la fattura mi riporti l’importo per ogni voce, ed il suo totale.
+

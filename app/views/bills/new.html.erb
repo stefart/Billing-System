@@ -1,0 +1,35 @@
+<h1>Nuova Fattura</h1>
+<%= form_for([@client, @bill]) do |f| %>
+
+<% if @bill.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @bill.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :voce %>
+    <%= f.text_field :voce %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label 'Ore effettuate' %>
+    <%= f.number_field :ore_eff %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Tariffa' %>
+    <!-- f.number_field :tariffa, :value=> @tariffa_oraria.tariffa, :readonly => true
+         f.number_field :tariffa, :value=> 5, :readonly => true -->
+    <%= f.number_field :tariffa, :value=> @tarif, :readonly => true%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Inserisci Nuova Fattura" %>
+  </div>
+<% end %>
