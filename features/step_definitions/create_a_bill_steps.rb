@@ -2,6 +2,12 @@ Given("there is a client called {string}") do |string|
  FactoryBot.create(:client, nome: string)
 end
 
+
+Given("there is a tariffa oraria of {int} EUR per ora") do |int|
+  FactoryBot.create(:tariffa_orarium, tariffa: int)
+end
+
+
 Given("I am on the page of the client called {string}") do |string|
  client = Client.find_by nome: string
  visit client_path(client)

@@ -3,10 +3,9 @@ class BillsController < ApplicationController
   before_action :set_client, except: [:destroy]
   before_action :set_tariffa, only: [:new, :create, :show, :index]
 
-
   def new
   @bill = Bill.new
- @tarif = TariffaOrarium.last.tariffa
+  @tarif = TariffaOrarium.last.tariffa
   end
 
   def create
@@ -20,6 +19,7 @@ class BillsController < ApplicationController
       end
     end
   end
+
 
   def destroy
     @bill = Bill.find params[:id]
@@ -35,27 +35,25 @@ class BillsController < ApplicationController
     end
    end
 
+  
+
    def index
      @bills = @client.bills
    end
 
    def show
      @bill=Bill.find params[:id]
-
    end
 
   private
-
 
   def set_client
     @client = Client.find params[:client_id]
   end
 
   def set_tariffa
-    @tariffa_oraria = TariffaOrarium.last
+     @tariffa_oraria = TariffaOrarium.last
   end
-
-
 
   def bill_params
     params.require(:bill).permit(:voce, :ore_eff, :tariffa)

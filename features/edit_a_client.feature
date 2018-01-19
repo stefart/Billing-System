@@ -19,3 +19,10 @@ Feature: show and edit a Client
     And I change the surname to "Rossi"
     And I click on "Ok"
     Then I should see "Rossi" on the client details
+
+  Scenario: Delete the client
+    Given I am on the index of clients 
+    And there is a client called "Mario Rossi"
+    When I click on "Elimina"
+    And I click on "OK" on the alert box
+    Then I should not see "Rossi" on the client details

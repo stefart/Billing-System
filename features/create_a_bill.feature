@@ -5,6 +5,7 @@ Feature: create a Bill
 
   Background:
     Given there is a client called "Mario Rossi"
+    Given there is a tariffa oraria of 18 EUR per ora    
 
   Scenario: create a valid bill
     Given I am on the page of the client called "Mario Rossi"

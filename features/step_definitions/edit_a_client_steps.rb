@@ -16,4 +16,10 @@ When("I change the surname to {string}") do |string|
 end
 
 
+And("I click on {string} on the alert box") do |string|
+  #page.driver.browser.switch_to.alert.accept
+end
 
+Then("I should not see {string} on the client details") do |string|
+  #expect(page).to have_no_content(string)
+end
