@@ -1,4 +1,9 @@
  # Billing System
+ 
+ ## January 2018 Update
+  - Aggiunta feature che controlla l'addebito di una nuova fattura al cliente. Copertura attuale all' 84%.
+  - Sebbene siano state scritte le features apposite, non è stato possibile effettuare la verifica dell'eliminazione del cliente e della fattura, a causa di un imprevisto tecnico a scaricare la gemma "capybara-webkit" che permette l'interazione con gli alert-box javascript. Qualora si scaricasse la gemma, la copertura passerebbe dall 84% all' 88%.
+  
 ## Panoramica Generale
 L’applicazione è stata sviluppata per fornire un sistema di elenco e gestione delle fatture verso i clienti. Di seguito vengono elencate le caratteristiche di tutti i principali componenti che caratterizzano l’applicazione:
 
